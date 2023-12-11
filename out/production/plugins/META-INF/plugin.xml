@@ -1,0 +1,56 @@
+<idea-plugin>
+  <id>com.your.company.unique.plugin.id</id>
+  <name>demo</name>
+  <version>1.0</version>
+  <vendor email="1173137842@qq.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+  <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+    <toolWindow factoryClass="com.zbiti.mdwork.window.windowFactory" id="taskWindow" anchor="right" icon="/img/notebook.svg"></toolWindow>
+    <!-- 注册你的 CheckinHandlerFactory -->
+<!--    <vcs-checkin-handler-factory implementation="com.example.commitListener.CustomCheckinHandlerFactory"/>-->
+    <vcs.commitMessageProvider implementation="com.zbiti.mdwork.VcsListener.commitListener"></vcs.commitMessageProvider>
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="FirstAction" class="com.zbiti.plugin.action.FirstAction" text="测试" description="描述测试">
+      <add-to-group group-id="ToolsMenu" anchor="first"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl U"/>
+    </action>
+    <!-- Add your actions here -->
+    <action id="PopApplicationId" class="com.zbiti.mdwork.action.popAction" text="完成任务"
+            description="用于完成任务">
+      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+    </action>
+
+    <!-- Add your actions here -->
+<!--    <action id="com.example.commitListener" class="com.zbiti.mdwork.VcsListener.commitListener" text="Custom Commit Action">-->
+
+      <!-- 可选：配置你的 Action 的图标等信息 -->
+<!--    </action>-->
+
+    <action id="testListener" class="com.zbiti.mdwork.VcsListener.testListener" text="testListener" description="描述提交">
+      <add-to-group group-id="GitFileActions" anchor="first"/>
+    </action>
+  </actions>
+
+</idea-plugin>
